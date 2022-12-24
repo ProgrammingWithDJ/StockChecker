@@ -3,6 +3,7 @@ import { ApiService } from '../service/api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stocklist',
@@ -19,7 +20,7 @@ export class StocklistComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private api:ApiService) { }
+  constructor(private api:ApiService,private router: Router) { }
 
   ngOnInit(): void {
     this.getBannerData();
@@ -54,6 +55,10 @@ export class StocklistComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  goToDetails(row: any){
+  this.router.navigate(['stock-details',row.id]);
   }
 
 }
