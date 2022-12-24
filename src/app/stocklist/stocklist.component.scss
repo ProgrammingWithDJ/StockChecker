@@ -33,3 +33,38 @@
     display: flex;
     align-items: center;
 }
+
+.card{
+    border:0;
+    background:transparent;
+    color:#fff;
+    padding:10px;
+    margin:40px;
+    width: 100px;
+    height: 200px;
+
+    img{
+        width: 70px;
+        margin: 0 auto;
+    }
+    h5{
+        font-weight:500;
+    }
+    p{
+        font-weight: 700;
+    }
+}
+
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+      

@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { StocklistComponent } from './stocklist/stocklist.component';
 import { StockdetailComponent } from './stockdetail/stockdetail.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator'
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
