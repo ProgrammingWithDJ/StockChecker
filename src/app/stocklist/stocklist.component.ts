@@ -4,6 +4,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
+import { CurrencyService } from '../service/currency.service';
 
 @Component({
   selector: 'app-stocklist',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 export class StocklistComponent implements OnInit {
 
   bannerData: any=[];
+  currency: string ="INR";
   displayedColumns: string[] =['symbol', 'current_price','price_change_percentage_24h','market_cap']
   dataSource!: MatTableDataSource<any>;
 
@@ -20,25 +22,31 @@ export class StocklistComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private api:ApiService,private router: Router) { }
+  constructor(private api:ApiService,private router: Router, private currenycService:CurrencyService) { }
 
   ngOnInit(): void {
     this.getBannerData();
     this.getAllData();
+    this.currenycService.getCurrency()
+    .subscribe(val =>
+      {
+        this.currency = val;
+      })
   }
   
   getBannerData(){
-    this.api.getTrendingCurrency("INR")
+    this.api.getTrendingCurrency(this.currency)
     .subscribe(res=>{
       console.log(res);
       this.bannerData=res;
-
+         this.getAllData();
+         this.getBannerData();
     });
   }
 
   getAllData()
   {
-    this.api.getCurrency("INR")
+    this.api.getCurrency(this.currency)
     .subscribe(res =>{
       console.log(res);
 

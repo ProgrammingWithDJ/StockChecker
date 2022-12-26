@@ -2,8 +2,8 @@
     <div class="container">
 
         <div class="header">
-            <h2>Stock checker</h2>
-            <h2>Stock checker again</h2>
+            <h2>Crypto checker</h2>
+            <h2>We are displaying the best cryto's in the market</h2>
         </div>
         <div class="subheader">
             <marquee behavior="scroll" onmouseover="stop()" onmouseout="start()" 
@@ -20,7 +20,7 @@
                             <h5 class="card-title">{{row.symbol | uppercase}} <span class="text-danger">
                             {{row.market_cap_change_percentage_24h}}%   
                             </span></h5>
-                            <p class="card-text">{{row.current_price | currency: "INR"}}</p>
+                            <p class="card-text">{{row.current_price | currency: this.currency}}</p>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
           <!-- Progress Column -->
           <ng-container matColumnDef="current_price">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
-            <td mat-cell *matCellDef="let row"> {{row.current_price | currency:'INR'}}</td>
+            <td mat-cell *matCellDef="let row"> {{row.current_price | currency: this.currency}}</td>
           </ng-container>
       
           <!-- Name Column -->
@@ -65,7 +65,7 @@
           <!-- Fruit Column -->
           <ng-container matColumnDef="market_cap">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> market Cap </th>
-            <td mat-cell *matCellDef="let row"> {{row.market_cap | currency:'INR'}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.market_cap | currency: this.currency}} </td>
           </ng-container>
       
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
